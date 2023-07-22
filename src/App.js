@@ -1,4 +1,5 @@
 import "./styles.css";
+import Table from 'react-bootstrap/Table';
 
 const ENTRIES = [
   {
@@ -54,24 +55,26 @@ function EntryTable({ entries }) {
   });
 
   return (
-    <table>
+    <Table bordered hover>
       <thead>
-        <th>Date From</th>
-        <th>Date To</th>
-        <th>Vessel Name</th>
-        <th>Vessel Make</th>
-        <th>Vessel Length</th>
-        <th>Ports Visited</th>
-        <th>Days On Board</th>
-        <th>Tidal</th>
-        <th>Max Wind</th>
-        <th>Capacity On Board</th>
-        <th>Distance Logged</th>
-        <th>Night Hours</th>
-        <th>Skipper</th>
+        <tr>
+          <th>Date From</th>
+          <th>Date To</th>
+          <th>Vessel Name</th>
+          <th>Vessel Make</th>
+          <th>Vessel Length</th>
+          <th>Ports Visited</th>
+          <th>Days On Board</th>
+          <th>Tidal</th>
+          <th>Max Wind</th>
+          <th>Capacity On Board</th>
+          <th>Distance Logged</th>
+          <th>Night Hours</th>
+          <th>Skipper</th>
+        </tr>
       </thead>
       <tbody>{entryRows}</tbody>
-    </table>
+    </Table>
   );
 }
 
