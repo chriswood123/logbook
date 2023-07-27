@@ -27,6 +27,26 @@ const ENTRIES = [
 
 const PREREQUISITES = [{}];
 
+function Port({ port, portKey }) {
+  return(
+    <li key={portKey}>{port}</li>
+  )
+}
+
+function PortsVisited({ portsVisited }) {
+  const ports = [];
+  let i = 0;
+  portsVisited.forEach((port) => {
+    ports.push(<Port portKey={i} port={port} />);
+    i = i + 1;
+  })
+  return (
+    <ul>
+      {ports}
+    </ul>
+  )
+}
+
 function Entry({ entry }) {
   return (
     <tr>
@@ -35,7 +55,9 @@ function Entry({ entry }) {
       <td>{entry["vesselName"]}</td>
       <td>{entry["vesselLength"]}</td>
       <td>{entry["vesselMake"]}</td>
-      <td>{entry["portsVisited"]}</td>
+      <td>
+        <PortsVisited portsVisited={entry["portsVisited"]} />
+      </td>
       <td>{entry["daysOnBoard"]}</td>
       <td>{entry["tidal"]}</td>
       <td>{entry["maxWind"]}</td>
