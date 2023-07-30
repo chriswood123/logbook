@@ -1,5 +1,7 @@
 import "./styles.css";
 import Table from 'react-bootstrap/Table';
+import Form from 'react-bootstrap/Form';
+import { Container, Row, Col } from "react-bootstrap";
 import { useState } from "react";
 
 function Port({ port, portKey }) {
@@ -133,61 +135,95 @@ function AddEntry({ entries, setEntries }) {
   }
 
   return (
-    <form method="post" onSubmit={handleSubmit}>
-      <label>
-        Date From: <input name="dateFrom" />
-      </label>
-      <br />
-      <label>
-        Date To: <input name="dateTo" />
-      </label>
-      <br />
-      <label>
-        Vessel Name: <input name="vesselName" />
-      </label>
-      <br />
-      <label>
-        Vessel Make: <input name="vesselMake" />
-      </label>
-      <br />
-      <label>
-        Vessel Length: <input name="vesselLength" />
-      </label>
-      <br />
-      <label>
-        Ports Visited: <input name="portsVisited" />
-      </label>
-      <br />
-      <label>
-        Days On Board: <input name="daysOnBoard" />
-      </label>
-      <br />
-      <label>
-        Tidal: <input type="checkbox" name="tidal" defaultChecked={false} />
-      </label>
-      <br />
-      <label>
-        Max Wind: <input name="maxWind" />
-      </label>
-      <br />
-      <label>
-        Capacity On Board: <input name="capacityOnBoard" />
-      </label>
-      <br />
-      <label>
-        Distance Logged: <input name="distanceLogged" />
-      </label>
-      <br />
-      <label>
-        Night Hours: <input name="nightHours" />
-      </label>
-      <br />
-      <label>
-        Skipper: <input name="skipper" />
-      </label>
-      <br />
-      <button type="submit">Add Entry</button>
-    </form>
+    <Form method="post" onSubmit={handleSubmit}>
+      <Row>
+        <Col>
+          <Form.Group className="mb-3" controlId="dateFrom">
+            <Form.Label>
+              Date From
+            </Form.Label>
+            <Form.Control type="date" name="dateFrom" size="sm" />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="dateTo">
+            <Form.Label>
+              Date To
+            </Form.Label>
+            <Form.Control type="date" name="dateTo" />
+          </Form.Group>
+          </Col>
+          <Col>
+          <Form.Group className="mb-3" controlId="vesselName">
+            <Form.Label>
+              Vessel Name
+            </Form.Label>
+            <Form.Control type="text" name="vesselName" />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="vesselMake">
+            <Form.Label>
+              Vessel Make
+            </Form.Label>
+            <Form.Control type="text" name="vesselMake" />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="vesselLength">
+            <Form.Label>
+              Vessel Length
+            </Form.Label>
+            <Form.Control type="text" name="vesselLength" />
+          </Form.Group>
+          </Col>
+          <Col>
+          <Form.Group className="mb-3" controlId="portsVisited">
+            <Form.Label>
+              Ports Visited
+            </Form.Label>
+            <Form.Control type="text" name="portsVisited" />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="tidal">
+            <Form.Label>
+              Tidal
+            </Form.Label>
+            <Form.Check type="checkbox" name="tidal" />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="maxWind">
+            <Form.Label>
+              Max Wind
+            </Form.Label>
+            <Form.Control type="text" name="maxWind" />
+          </Form.Group>
+          </Col>
+          <Col>
+          <Form.Group className="mb-3" controlId="capacityOnBoard">
+            <Form.Label>
+              Capacity On Board
+            </Form.Label>
+            <Form.Control type="text" name="capacityOnBoard" />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="distanceLogged">
+            <Form.Label>
+              Distance Logged
+            </Form.Label>
+            <Form.Control type="text" name="distanceLogged" />
+          </Form.Group>
+          </Col>
+          <Col>
+          <Form.Group className="mb-3" controlId="nightHours">
+            <Form.Label>
+              Night Hours
+            </Form.Label>
+            <Form.Control type="text" name="nightHours" />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="skipper">
+            <Form.Label>
+              Skipper
+            </Form.Label>
+            <Form.Control type="text" name="skipper" />
+          </Form.Group>
+          <Form.Group>
+            <button type="submit">Add Entry</button>
+          </Form.Group>
+        </Col>
+      </Row>
+    </Form>
   )
 }
 
@@ -195,12 +231,28 @@ function LogBook({ initialEntries, prerequisites }) {
   const [entries, setEntries] = useState(initialEntries);
 
   return (
-    <>
-      <AddEntry entries={entries} setEntries={setEntries}/>
-      <Summary entries={entries} />
-      <Prerequisites entries={entries} prerequisites={prerequisites} />
-      <EntryTable entries={entries} />
-    </>
+    <Container>
+      <Row>
+        <Col>
+          <AddEntry entries={entries} setEntries={setEntries}/>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Summary entries={entries} />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Prerequisites entries={entries} prerequisites={prerequisites} />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <EntryTable entries={entries} />
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
