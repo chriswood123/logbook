@@ -12,6 +12,13 @@ export default function AddEntry({ entries, setEntries }) {
       if (formJson.tidal === "on") {
         isTidal = true;
       }
+
+      const dateFrom = new Date(formJson.dateFrom);
+      const dateTo = new Date(formJson.dateTo);
+      const timeOnBoard = dateTo - dateFrom;
+      // Difference in days (Date give milliseconds)
+      // plus 1 to make the number of days inclusive
+      const daysOnBoard = timeOnBoard / 86400000 + 1;
   
       const newEntry = {
         dateFrom: formJson.dateFrom,
@@ -21,7 +28,7 @@ export default function AddEntry({ entries, setEntries }) {
         vesselMake: formJson.vesselMake,
         tidal: isTidal,
         portsVisited: formJson.portsVisited.split(', '),
-        daysOnBoard: formJson.daysOnBoard,
+        daysOnBoard: daysOnBoard,
         maxWind: formJson.maxWind,
         capacity: formJson.capacityOnBoard,
         distanceLogged: formJson.distanceLogged,
