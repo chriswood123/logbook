@@ -1,5 +1,5 @@
 import "./styles.css";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Navbar } from "react-bootstrap";
 import { useState } from "react";
 import AddEntry from './AddEntry';
 import EntryTable from './EntryTable';
@@ -12,11 +12,24 @@ function Summary({ entries }) {
   return <div />;
 }
 
+function Header() {
+  return(
+    <Navbar>
+      <Navbar.Brand>Logbook</Navbar.Brand>
+    </Navbar>
+  )
+}
+
 function LogBook({ initialEntries, prerequisites }) {
   const [entries, setEntries] = useState(initialEntries);
 
   return (
     <Container>
+      <Row>
+        <Col>
+          <Header />
+        </Col>
+      </Row>
       <Row>
         <Col>
           <AddEntry entries={entries} setEntries={setEntries}/>
