@@ -1,32 +1,6 @@
 import "./styles.css";
 import Table from 'react-bootstrap/Table';
 
-const ENTRIES = [
-  {
-    dateFrom: "19/07/2014",
-    dateTo: "27/07/2014",
-    vesselName: "Wave Glider",
-    vesselLength: "38",
-    vesselMake: "Farr",
-    tidal: true,
-    portsVisited: [
-      "Namley Harbour",
-      "Port Fraser",
-      "Rozelle Cove",
-      "Dawson Harbour",
-      "Namley Harbour"
-    ],
-    daysOnBoard: 6,
-    maxWind: 5,
-    capacity: "Crew",
-    distanceLogged: 150,
-    nightHours: 6,
-    skipper: "Graham Huvans"
-  }
-];
-
-const PREREQUISITES = [{}];
-
 function Port({ port, portKey }) {
   return(
     <li key={portKey}>{port}</li>
@@ -112,7 +86,7 @@ function AddEntry() {
   return <div />;
 }
 
-function LogBook({ entries, prerequisites }) {
+function LogBook({ initialEntries, prerequisites }) {
   return (
     <>
       <AddEntry />
@@ -124,5 +98,32 @@ function LogBook({ entries, prerequisites }) {
 }
 
 export default function App() {
-  return <LogBook entries={ENTRIES} prerequisites={PREREQUISITES} />;
+  const exampleEntires = [
+    {
+      dateFrom: "19/07/2014",
+      dateTo: "27/07/2014",
+      vesselName: "Wave Glider",
+      vesselLength: "38",
+      vesselMake: "Farr",
+      tidal: true,
+      portsVisited: [
+        "Namley Harbour",
+        "Port Fraser",
+        "Rozelle Cove",
+        "Dawson Harbour",
+        "Namley Harbour"
+      ],
+      daysOnBoard: 6,
+      maxWind: 5,
+      capacity: "Crew",
+      distanceLogged: 150,
+      nightHours: 6,
+      skipper: "Graham Huvans",
+      example: true
+    }
+  ];
+
+  const PREREQUISITES = [{}];
+
+  return <LogBook initialEntries={exampleEntires} prerequisites={PREREQUISITES} />;
 }
