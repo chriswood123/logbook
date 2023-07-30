@@ -22,6 +22,13 @@ function PortsVisited({ portsVisited }) {
 }
 
 function Entry({ entry }) {
+  let isTidal = ""
+  if (entry["tidal"] === true) {
+    isTidal = "Yes"
+  } else {
+    isTidal = "No"
+  }
+
   return (
     <tr>
       <td>{entry["dateFrom"]}</td>
@@ -33,7 +40,7 @@ function Entry({ entry }) {
         <PortsVisited portsVisited={entry["portsVisited"]} />
       </td>
       <td>{entry["daysOnBoard"]}</td>
-      <td>{entry["tidal"]}</td>
+      <td>{isTidal}</td>
       <td>{entry["maxWind"]}</td>
       <td>{entry["capacity"]}</td>
       <td>{entry["distanceLogged"]}</td>
