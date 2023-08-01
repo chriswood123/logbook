@@ -3,12 +3,9 @@ import { Container, Row, Col, Navbar } from "react-bootstrap";
 import { useState } from "react";
 import AddEntry from './AddEntry';
 import EntryTable from './EntryTable';
+import Summary from "./Summary";
 
 function Prerequisites({ entries, prerequisites }) {
-  return <div />;
-}
-
-function Summary({ entries }) {
   return <div />;
 }
 
@@ -32,12 +29,12 @@ function LogBook({ initialEntries, prerequisites }) {
       </Row>
       <Row>
         <Col>
-          <AddEntry entries={entries} setEntries={setEntries}/>
+          <Summary entries={entries} />
         </Col>
       </Row>
       <Row>
         <Col>
-          <Summary entries={entries} />
+          <AddEntry entries={entries} setEntries={setEntries}/>
         </Col>
       </Row>
       <Row>
