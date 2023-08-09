@@ -60,14 +60,20 @@ export default function Summary({ entries }) {
     const totalMilesAsSkipperNonTidal = calculateNonTidalMiles(entries, true);
     const totalMilesAsSkipperTidal = calculateTidalMiles(entries, true);
     const totalMilesAsSkipper = totalMilesAsSkipperNonTidal + totalMilesAsSkipperTidal;
+    let percentageTidalMilesAsSkipper = 0;
+    if (totalMilesAsSkipper > 0) {
+        percentageTidalMilesAsSkipper = Math.round(totalMilesAsSkipperTidal / totalMilesAsSkipper * 100);
+    }
 
     const totalNightHoursNonTidal = calculateNightHours(entries, false);
     const totalNightHoursTidal = calculateNightHours(entries, true);
     const totalNightHours = totalNightHoursNonTidal + totalNightHoursTidal;
+    const percentageTidalNightHours = Math.round(totalNightHoursTidal / totalNightHours * 100);
 
     const totalMilesNonTidal = calculateNonTidalMiles(entries, false);
     const totalMilesTidal = calculateTidalMiles(entries, false);
     const totalMiles = totalMilesNonTidal + totalMilesTidal;
+    const percentageTidalMiles = Math.round(totalMilesTidal / totalMiles * 100);
 
     return(
         <>
@@ -108,6 +114,12 @@ export default function Summary({ entries }) {
                             <td class="text-center">{totalMilesNonTidal}</td>
                             <td class="text-center">{totalMilesAsSkipperNonTidal}</td>
                             <td class="text-center">{totalNightHoursNonTidal}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-end">Percentage Tidal</th>
+                            <td class="text-center">{percentageTidalMiles}%</td>
+                            <td class="text-center">{percentageTidalMilesAsSkipper}%</td>
+                            <td class="text-center">{percentageTidalNightHours}%</td>
                         </tr>
                     </tbody>
                 </Table>
