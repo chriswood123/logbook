@@ -72,7 +72,8 @@ export default function Summary({ entries }) {
     return(
         <>
             <Button
-                variant="light"
+                as="button"
+                class="btn btn-outline-dark"
                 onClick={() => setOpen(!open)}
                 aria-controls="summary-table"
                 aria-expanded={open}

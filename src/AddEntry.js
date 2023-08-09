@@ -1,5 +1,5 @@
 import Form from 'react-bootstrap/Form';
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 
 export default function AddEntry({ entries, setEntries }) {
     function handleSubmit(e) {
@@ -135,7 +135,7 @@ export default function AddEntry({ entries, setEntries }) {
               <Form.Control type="text" name="skipper" />
             </Form.Group>
             <Form.Group>
-              <button type="submit">Add Entry</button>
+              <button type="submit" class="btn btn-outline-dark">Add Entry</button>
             </Form.Group>
           </Col>
         </Row>
